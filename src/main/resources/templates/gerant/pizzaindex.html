@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello</title>
+</head>
+<body>
+<div th:switch="${users}">
+    <h2 th:case="null">liste des Pizzas à la carte</h2>
+        <div th:case="*">
+            <h2>Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>nompizza</th>
+                        <th>ingredient 1</th>
+                        <th>ingredient 2</th>
+                        <th>ingredient 3</th>
+                        <th>ingredient 4</th>
+                        <th>ingredient 5</th>
+                        <th>ingredient 6</th>
+                        <th>prix        </th>
+                        <th>photo       </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pizza : ${pizzas}">
+                    <td th:text="${pizza.nompizza}"></td>
+                    <td th:text="${pizza.ingredient1}"></td>
+                    <td th:text="${pizza.ingredient2}"></td>
+                    <td th:text="${pizza.ingredient3}"></td>
+                    <td th:text="${pizza.ingredient4}"></td>
+                    <td th:text="${pizza.ingredient5}"></td>
+                    <td th:text="${pizza.ingredient6}"></td>
+                    <td th:text="${pizza.prix}"       ></td>
+                    <td th:text="${pizza.photo}"      ></td>
+                                 
+                    //creer /editpizza et /deletepizza dans le gerantcontroller
+                    <td><a th:href="@{/editpizza/{id}(id=${pizza.id})}">Editer</a></td>
+                    <td><a th:href="@{/deletepizza/{id}(id=${pizza.id})}">Supprimer</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+    <p><a href="/signup">Add a new user</a></p>
+    
+</div>
+</body>
+</html>

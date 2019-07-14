@@ -1,13 +1,52 @@
-<form action="" method="get" class="form-example">
-  <div class="form-example">
-    <label for="name">Enter your name: </label>
-    <input type="text" name="name" id="name" required>
-  </div>
-  <div class="form-example">
-    <label for="email">Enter your email: </label>
-    <input type="email" name="email" id="email" required>
-  </div>
-  <div class="form-example">
-    <input type="submit" value="Subscribe!">
-  </div>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajouter Pizza</title>
+</head>
+<body>
+	
+	<div>
+	<form action="#" th:action="@{/addpizza}" th:object="${pizza}" method="post">
+		
+		<label for="nompizza">Nom Pizza</label> 
+		<input type="text" th:field="*{nompizza}" id="nompizza" placeholder="nompizza"><br>
+		<span th:if="${#fields.hasErrors('nompizza')}" th:errors="*{nompizza}"></span>
+		
+		<label for="ingredient1">ingredient 1</label> 
+		<input type="text" th:field="*{ingredient1}" id="ingredient1" placeholder="ingredient1"><br>
+		<span th:if="${#fields.hasErrors('ingredient1')}" th:errors="*{ingredient1}"></span>
+		
+		<label for="ingredient2">ingredient 2</label> 
+		<input type="text" th:field="*{ingredient2}" id="ingredient2" placeholder="ingredient2"><br>
+		<span th:if="${#fields.hasErrors('ingredient2')}" th:errors="*{ingredient2}"></span>
+		
+		<label for="ingredient3">ingredient 3</label> 
+		<input type="text" th:field="*{ingredient3}" id="ingredient3" placeholder="ingredient3"><br>
+		<span th:if="${#fields.hasErrors('ingredient3')}" th:errors="*{ingredient3}"></span>
+		
+		<label for="ingredient4">ingredient 4</label> 
+		<input type="text" th:field="*{ingredient4}" id="ingredient4" placeholder="ingredient4"><br>
+		<span th:if="${#fields.hasErrors('ingredient4')}" th:errors="*{ingredient4}"></span>
+		
+		<label for="ingredient5">ingredient 5</label> 
+		<input type="text" th:field="*{ingredient5}" id="ingredient5" placeholder="ingredient5"><br>
+		<span th:if="${#fields.hasErrors('ingredient5')}" th:errors="*{ingredient5}"></span>
+		
+		<label for="ingredient6">ingredient 6</label> 
+		<input type="text" th:field="*{ingredient6}" id="ingredient6" placeholder="ingredient6"><br>
+		<span th:if="${#fields.hasErrors('ingredient6')}" th:errors="*{ingredient6}"></span>
+		
+		<label for="prix">Prix</label> 
+		<input type="text" th:field="*{prix}" id="prix" placeholder="prix"><br>
+		<span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
+		
+		<label for="photo">Photo</label> 
+		<input type="text" th:field="*{photo}" id="photo" placeholder="photo"><br>
+		<span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+		
+		<input type="submit" value="Ajouter Pizza">
+	</form>
+	</div>
+</body>
+</html>
