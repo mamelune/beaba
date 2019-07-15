@@ -34,7 +34,7 @@ public class GerantController {
 	  "gerant/pizzaform"; }
 	  
 	  pizzaRepository.save(pizza); model.addAttribute("pizzas",
-	  pizzaRepository.findAll()); return "index";
+	  pizzaRepository.findAll()); return "gerant/pizzaindex";
 	 
         
     }
@@ -45,7 +45,7 @@ public class GerantController {
           .orElseThrow(() -> new IllegalArgumentException("Invalid pizza Id:" + id));
          
         model.addAttribute("pizza", pizza);
-        return "update-pizza";
+        return "gerant/pizzaform";
         
     }
         
@@ -54,9 +54,22 @@ public class GerantController {
             Pizza pizza = pizzaRepository.findById(id)
               .orElseThrow(() -> new IllegalArgumentException("Invalid pizza Id:" + id));
             pizzaRepository.delete(pizza);
-            model.addAttribute("pizza", pizzaRepository.findAll());
-            return "pizzaindex";
+            model.addAttribute("pizzas", pizzaRepository.findAll());
+            return "gerant/pizzaindex";
         }   
         
-
+    @PostMapping("/updatepizza/{id}")
+    public String updatePizza(@PathVariable("id") long id, @Valid Pizza pizza, 
+      BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            pizza.setId(id);
+            return "gerant/pizzaform";
+        }
+             
+        pizzaRepository.save(pizza);
+        model.addAttribute("users", pizzaRepository.findAll());
+        return "index";
+    }
+    
+    
 }

@@ -81,9 +81,17 @@ public class Pizza {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	
+	
+	
+	public Pizza() {
+		super();
+	}
+	
+	
 	public Pizza(Long id, String nompizza, String ingredient1, String ingredient2, String ingredient3,
 			String ingredient4, String ingredient5, String ingredient6, String prix, String photo) {
-		super();
+		
 		this.id = id;
 		this.nompizza = nompizza;
 		this.ingredient1 = ingredient1;

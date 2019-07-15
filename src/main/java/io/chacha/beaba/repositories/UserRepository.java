@@ -1,4 +1,4 @@
-package io.chacha.beaba;
+package io.chacha.beaba.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

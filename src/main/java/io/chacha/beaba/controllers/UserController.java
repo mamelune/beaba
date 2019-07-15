@@ -1,4 +1,4 @@
-package io.chacha.beaba;
+package io.chacha.beaba.controllers;
 
 import javax.validation.Valid;
 
@@ -9,8 +9,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.WebRequest;
 
+import io.chacha.beaba.repositories.UserRepository;
+import io.chacha.beaba.tables.Client;
 import io.chacha.beaba.tables.User;
+import io.chacha.beaba.tables.UserDto;
 
 
 
@@ -68,8 +74,21 @@ public class UserController {
     }
     
     
+    //Aller à la page où le client s'enregistre
+   
+    @GetMapping("/registration")
+    public String showSignUpForm(Client client) {
+        return "client/registration";
+    }
+    
+    @RequestMapping(value = "/user/registration", method = RequestMethod.GET)
+    public String showRegistrationForm(WebRequest request, Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute("user", userDto);
+        return "registration";
+    }
     
     
     
-    // additional CRUD methods
+    
 }
